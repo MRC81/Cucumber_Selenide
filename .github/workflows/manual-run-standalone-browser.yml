@@ -1,4 +1,4 @@
-name: Cucumber Allure tests CI - manual (Selenoid)
+name: Cucumber Allure tests CI - manual (Standalone browser)
 
 on:
   workflow_call:
@@ -37,23 +37,29 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Start Selenoid Server
-        uses: Xotabu4/selenoid-github-action@v2
-        with:
-          selenoid-start-arguments: |
-            --browsers-json "./browsers.json"
-        id: start-selenoid
-        continue-on-error: false
+      - name: Install Chrome
+        id: setup_chrome
+        if: ${{ inputs.BROWSER == 'chrome' }}
+        uses: browser-actions/setup-chrome@latest
+      - name: Print Chrome version
+        if: ${{ inputs.BROWSER == 'chrome' }}
+        run: chrome --version
 
-      - name: Check Selenoid has been started
-        run: |
-          response=$(curl --head --fail http://localhost:4444/status 2>&1)
-          if [ $? -eq 0 ]; then
-            echo "Selenoid is available on localhost:4444"
-            echo "Response: $response"
-          else
-            echo "Selenoid is not available on localhost:4444"
-          fi
+      - name: Install Firefox
+        id: setup_firefox
+        if: ${{ inputs.BROWSER == 'firefox' }}
+        uses: browser-actions/setup-firefox@latest
+      - name: Print Firefox version
+        if: ${{ inputs.BROWSER == 'firefox' }}
+        run: firefox --version
+
+      - name: Install Edge
+        id: setup_edge
+        if: ${{ inputs.BROWSER == 'edge' }}
+        uses: browser-actions/setup-edge@latest
+      - name: Print Edge version
+        if: ${{ inputs.BROWSER == 'edge' }}
+        run: (Get-Item (Get-Command msedge).Source).VersionInfo.ProductVersion
 
       - name: Build and Test with Gradle
         if: always()
@@ -86,3 +92,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-history
+
