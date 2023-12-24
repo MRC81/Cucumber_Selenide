@@ -1,0 +1,5 @@
+"Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
+"","Verify that the current stock value is within the 52 week range","Compare the current value with the 52 week range on the ""/equities/gamestop-corp"" page","0","1","0","0","0"
+"","Verify Top Navigation bar","Top Navigation bar Editions button is functional","0","1","0","0","0"
+"","Verify that the current stock value is within the 52 week range","Compare the current value with the 52 week range on the ""/equities/apple-computer-inc"" page","0","1","0","0","0"
+"","Verify that the current stock value is within the 52 week range","Compare the current value with the 52 week range on the ""/equities/tesla-motors"" page","0","1","0","0","0"
