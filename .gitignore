@@ -1,7 +1,0 @@
-# Project exclude paths
-/.gradle/
-/reports/
-/build/
-/.idea/
-/allure-results/
-*.DS_Store
