@@ -22,13 +22,11 @@ public class CapabilitiesProvider {
                 switch (mode) {
                     case "local" -> {
                         firefoxOptions.setCapability("browserName", browser);
-                        firefoxOptions.setCapability("version", version);
 
                         return firefoxOptions;
                     }
                     case "cloud" -> {
                         firefoxOptions.setCapability("browserName", browser);
-                        firefoxOptions.setCapability("version", version);
 
                         firefoxOptions.setCapability("selenoid:options", new HashMap<String, Object>() {{
                             put("enableLog", true);
