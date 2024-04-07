@@ -19,6 +19,7 @@ public class SelenideConfiguration {
         Configuration.baseUrl = "https://www.investing.com";
         Configuration.browserCapabilities = getCapability(browser, "latest", "local");
         Configuration.pageLoadStrategy = "eager";
+        Configuration.remote = "http://localhost:4444/wd/hub";
 
         setSelenideProperties();
     }
