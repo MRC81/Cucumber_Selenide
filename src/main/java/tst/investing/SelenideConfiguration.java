@@ -18,6 +18,7 @@ public class SelenideConfiguration {
         Configuration.headless = headless;
         Configuration.baseUrl = "https://www.investing.com";
         Configuration.browserCapabilities = getCapability(browser, "latest", "local");
+        Configuration.pageLoadStrategy = "eager";
 
         setSelenideProperties();
     }
