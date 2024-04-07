@@ -70,7 +70,7 @@ jobs:
       - name: Build and Test with Gradle
         if: always()
         run: |
-          ./gradlew clean test -Dselenide.headless=false -Dselenide.browser="${{ inputs.BROWSER }}"
+          ./gradlew clean test -Dselenide.headless=true -Dselenide.browser="${{ inputs.BROWSER }}"
         continue-on-error: true
 
       - name: Get Allure history
