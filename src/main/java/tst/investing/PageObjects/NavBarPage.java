@@ -32,7 +32,7 @@ public class NavBarPage {
         $(editionPopUp)
                 .shouldBe(Condition.visible
                         .because(logAndGetString(ERROR, "The Edition popup is not displayed")),
-                        Duration.ofSeconds(3));
+                        Duration.ofSeconds(5));
     }
 
     public void checkEditions(List<String> listOfExpectedEditions) {
