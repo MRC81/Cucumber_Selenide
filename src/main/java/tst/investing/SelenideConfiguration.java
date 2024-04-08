@@ -11,15 +11,18 @@ import static tst.investing.Infrastructure.Utilities.setSelenideProperties;
 public class SelenideConfiguration {
 
     public void getBrowser() {
+        String mode = System.getProperty("mode", "local");
         String browser = System.getProperty("selenide.browser", "chrome");
         boolean headless = parseBoolean(System.getProperty("selenide.headless", "false"));
 
         Configuration.browser = browser;
         Configuration.headless = headless;
         Configuration.baseUrl = "https://www.investing.com";
-        Configuration.browserCapabilities = getCapability(browser, "latest", "local");
+        Configuration.browserCapabilities = getCapability(browser, "latest", mode);
         Configuration.pageLoadStrategy = "eager";
-        Configuration.remote = "http://localhost:4444/wd/hub";
+        Configuration.remote = mode.equals("cloud")
+                ? "http://localhost:4444/wd/hub"
+                : null;
 
         setSelenideProperties();
     }

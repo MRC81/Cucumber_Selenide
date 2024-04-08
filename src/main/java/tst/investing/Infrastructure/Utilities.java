@@ -1,9 +1,14 @@
 package tst.investing.Infrastructure;
 
+import com.codeborne.selenide.Selenide;
+import io.qameta.allure.Allure;
+import org.openqa.selenium.OutputType;
 import tst.investing.SelenideConfiguration;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Base64;
 import java.util.Properties;
 
 import static tst.investing.hooks.Infrastructure.Log.*;
@@ -39,6 +44,12 @@ public class Utilities {
                     System.setProperty(prop, props.getProperty(prop));
             }
         }
+    }
+
+    public static void attachScreenshot(String attachmentName) {
+        String screenshotAsBase64 = Selenide.screenshot(OutputType.BASE64);
+        byte[] decoded = Base64.getDecoder().decode(screenshotAsBase64);
+        Allure.addAttachment("Failed Screenshot", new ByteArrayInputStream(decoded));
     }
 
 
