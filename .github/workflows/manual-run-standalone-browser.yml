@@ -41,9 +41,8 @@ jobs:
       - name: Adding markdown
         run: |
           echo "- BROWSER: ${{ steps.prepare.outputs.BROWSER }}" >> $GITHUB_STEP_SUMMARY
-          echo "ALLURE_LINK=https://mrc81.github.io/Cucumber_Selenide" >> $GITHUB_OUTPUT
 
-  run_auto_test:
+  run_tests:
     runs-on: ubuntu-latest
     needs: [prepare]
     steps:
@@ -134,4 +133,4 @@ jobs:
         run: |
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "Allure report has been generated" >> $GITHUB_STEP_SUMMARY
-          echo "- URL: ${{ steps.report.outputs.report_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "- URL: ${{ needs.prepare.outputs.ALLURE_LINK }}" >> $GITHUB_STEP_SUMMARY

@@ -7,11 +7,11 @@
         "port": "4444"
       },
       "119.0": {
-        "image": "browsers/chrome:119.0",
+        "image": "browsers/chrome:122.0",
         "port": "4444"
       },
       "118.0": {
-        "image": "browsers/chrome:118.0",
+        "image": "browsers/chrome:120.0",
         "port": "4444"
       }
     }
