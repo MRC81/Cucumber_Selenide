@@ -49,8 +49,10 @@ public class Utilities {
     public static void attachScreenshot(String attachmentName) {
         String screenshotAsBase64 = Selenide.screenshot(OutputType.BASE64);
         byte[] decoded = Base64.getDecoder().decode(screenshotAsBase64);
-        Allure.addAttachment("Failed Screenshot", new ByteArrayInputStream(decoded));
+        Allure.addAttachment(attachmentName, new ByteArrayInputStream(decoded));
     }
+
+
 
 
 }
