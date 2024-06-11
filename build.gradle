@@ -74,15 +74,42 @@ test {
     systemProperties = System.properties as Map<String, ?>
     useJUnitPlatform()
 
-    ignoreFailures =true
+    ignoreFailures = true
 
     systemProperties(project.gradle.startParameter.systemPropertiesArgs)
-    systemProperty("cucumber.junit-platform.naming-strategy", "long")
+    systemProperty "cucumber.junit-platform.naming-strategy", "long"
     systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
+//    systemProperty 'browser', System.getProperty('selenide.browser', 'chrome')
+//    systemProperty 'mode', System.getProperty('mode', 'LOCAL')
+//    systemProperty 'headless', System.getProperty('selenide.headless', 'false')
+//    systemProperty 'version', System.getProperty('version', 'latest')
 
     testLogging {
+        // set options for log level LIFECYCLE
         events "PASSED", "FAILED", "SKIPPED", "STANDARD_OUT", "STANDARD_ERROR"
+        exceptionFormat "FULL"
+        showExceptions true
+        showCauses true
+        showStackTraces true
+
+        // set options for log level DEBUG and INFO
+        debug {
+            events "PASSED", "FAILED", "SKIPPED", "STANDARD_OUT", "STANDARD_ERROR"
+            exceptionFormat "FULL"
+        }
+        info.events = debug.events
+        info.exceptionFormat = debug.exceptionFormat
+
+        afterSuite { desc, result ->
+            if (!desc.parent) { // will match the outermost suite
+                def output = "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} passed, ${result.failedTestCount} failed, ${result.skippedTestCount} skipped)"
+                def startItem = '|  ', endItem = '  |'
+                def repeatLength = startItem.length() + output.length() + endItem.length()
+                println('\n' + ('-' * repeatLength) + '\n' + startItem + output + endItem + '\n' + ('-' * repeatLength))
+            }
+        }
     }
 
     testLogging.showStandardStreams = true
 }
+

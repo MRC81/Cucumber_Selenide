@@ -2,27 +2,24 @@ package tst.investing;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
+import tst.investing.Infrastructure.Utilities;
+import tst.investing.Infrastructure.enums.Browsers;
+import tst.investing.Infrastructure.enums.Mode;
 
 import static java.lang.Boolean.parseBoolean;
-import static tst.investing.Infrastructure.CapabilitiesProvider.getCapability;
-import static tst.investing.Infrastructure.Utilities.setSelenideProperties;
+import static tst.investing.Infrastructure.BrowserOptions.OptionsProviderFactory.getOptionsProvider;
+import static tst.investing.Infrastructure.Utilities.*;
+import static tst.investing.Infrastructure.enums.Mode.CLOUD;
 
 
 public class SelenideConfiguration {
 
     public void getBrowser() {
-        String mode = System.getProperty("mode", "local");
-        String browser = System.getProperty("selenide.browser", "chrome");
-        boolean headless = parseBoolean(System.getProperty("selenide.headless", "false"));
+        Mode mode = Utilities.getRunMode();
 
-        Configuration.browser = browser;
-        Configuration.headless = headless;
         Configuration.baseUrl = "https://www.investing.com";
-        Configuration.browserCapabilities = getCapability(browser, "latest", mode);
-        Configuration.pageLoadStrategy = "eager";
-        Configuration.remote = mode.equals("cloud")
-                ? "http://localhost:4444/wd/hub"
-                : null;
+        Configuration.browserCapabilities = getOptionsProvider(getBrowserType(), getBrowserVersion(), mode);
+        Configuration.remote = mode.equals(CLOUD) ? "http://localhost:4444/wd/hub" : null;
 
         setSelenideProperties();
     }
