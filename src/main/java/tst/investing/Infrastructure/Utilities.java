@@ -83,7 +83,7 @@ public class Utilities {
     }
 
     public static String getBrowserVersion() {
-        return System.getProperty("version", "120");
+        return System.getProperty("version", "latest");
     }
 
 
