@@ -1,1 +1,0 @@
-{"total":2,"items":[{"uid":"0fbc5bb6a8048c949258702d83408432","name":"Verify that the current stock value is within the 52 week range","statistic":{"failed":0,"broken":2,"skipped":0,"passed":1,"unknown":0,"total":3}},{"uid":"640ddce6e2d78985f4aee00522ee3af1","name":"Verify Top Navigation bar","statistic":{"failed":0,"broken":1,"skipped":0,"passed":0,"unknown":0,"total":1}}]}
