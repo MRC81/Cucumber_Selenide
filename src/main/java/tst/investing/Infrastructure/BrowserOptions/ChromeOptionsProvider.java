@@ -22,6 +22,7 @@ public class ChromeOptionsProvider extends OptionsProvider {
     public AbstractDriverOptions<?> getOptions() {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setCapability(CapabilityType.PLATFORM_NAME, Platform.ANY);
+        chromeOptions.setBrowserVersion(version);
         chromeOptions.setAcceptInsecureCerts(true);
 
         chromeOptions.addArguments("--no-sandbox");
@@ -37,8 +38,8 @@ public class ChromeOptionsProvider extends OptionsProvider {
                 return chromeOptions;
             }
             case CLOUD -> {
-                chromeOptions.setCapability("browserName", Browsers.CHROME.getStringValue());
-                chromeOptions.setCapability("browserVersion", version);
+//                chromeOptions.setCapability("browserName", Browsers.CHROME.getStringValue());
+//                chromeOptions.setCapability("browserVersion", version);
                 chromeOptions.setCapability("selenoid:options", selenoidOptions);
                 return chromeOptions;
             }
