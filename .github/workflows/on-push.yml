@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 jobs:
-  prepare_env:
+  run_tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -29,10 +29,6 @@ jobs:
           install-dependencies: true
       - run: chrome --version
 
-  run_tests:
-    runs-on: ubuntu-latest
-    needs: prepare_env
-    steps:
       - name: Get Chrome Version
         id: chrome_version
         run: echo "::set-output name=version::$(chrome --version | cut -d ' ' -f 2 | cut -d '.' -f 1)"
