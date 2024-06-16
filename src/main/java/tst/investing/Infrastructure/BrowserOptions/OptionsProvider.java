@@ -1,7 +1,6 @@
 package tst.investing.Infrastructure.BrowserOptions;
 
 import org.openqa.selenium.remote.AbstractDriverOptions;
-import tst.investing.Infrastructure.enums.Mode;
 
 import java.util.HashMap;
 

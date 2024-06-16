@@ -38,8 +38,6 @@ public class ChromeOptionsProvider extends OptionsProvider {
                 return chromeOptions;
             }
             case CLOUD -> {
-//                chromeOptions.setCapability("browserName", Browsers.CHROME.getStringValue());
-//                chromeOptions.setCapability("browserVersion", version);
                 chromeOptions.setCapability("selenoid:options", selenoidOptions);
                 return chromeOptions;
             }
