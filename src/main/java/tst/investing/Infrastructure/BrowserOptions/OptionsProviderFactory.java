@@ -7,9 +7,9 @@ import tst.investing.Infrastructure.enums.Mode;
 public class OptionsProviderFactory {
     public static AbstractDriverOptions<?> getOptionsProvider(Browsers browser, String version, Mode mode) {
         return switch (browser) {
-            case FIREFOX -> new FireFoxOptionsProvider(version, mode).getOptions();
-            case CHROME -> new ChromeOptionsProvider(version, mode).getOptions();
-            case EDGE -> new EdgeOptionsProvider(version, mode).getOptions();
+            case FIREFOX -> new FireFoxCloudOptionsProvider(version, mode).getOptions();
+            case CHROME -> new ChromeCloudOptionsProvider(version, mode).getOptions();
+            case EDGE -> new EdgeCloudOptionsProvider(version, mode).getOptions();
             default -> throw new IllegalArgumentException("[ERROR] Invalid browser: " + browser);
         };
     }

@@ -4,10 +4,10 @@ import org.openqa.selenium.remote.AbstractDriverOptions;
 
 import java.util.HashMap;
 
-public abstract class OptionsProvider {
+public abstract class CloudOptionsProvider {
     protected HashMap<String, Object> selenoidOptions;
 
-    public OptionsProvider() {
+    public CloudOptionsProvider() {
         selenoidOptions = new HashMap<>();
         selenoidOptions.put("enableLog", true);
         selenoidOptions.put("enableVideo", true);

@@ -7,10 +7,10 @@ import org.openqa.selenium.remote.CapabilityType;
 import tst.investing.Infrastructure.enums.Browsers;
 import tst.investing.Infrastructure.enums.Mode;
 
-public class FireFoxOptionsProvider extends OptionsProvider {
+public class FireFoxCloudOptionsProvider extends CloudOptionsProvider {
     private final String version;
     private final Mode mode;
-    public FireFoxOptionsProvider(String version, Mode mode) {
+    public FireFoxCloudOptionsProvider(String version, Mode mode) {
         this.version = version;
         this.mode = mode;
     }
@@ -19,13 +19,14 @@ public class FireFoxOptionsProvider extends OptionsProvider {
     public AbstractDriverOptions<?> getOptions() {
         FirefoxOptions firefoxOptions = new FirefoxOptions();
         firefoxOptions.setCapability(CapabilityType.PLATFORM_NAME, Platform.ANY);
+        firefoxOptions.setBrowserVersion(version);
         firefoxOptions.setAcceptInsecureCerts(true);
 
         switch (mode) {
             case LOCAL -> {
                 return firefoxOptions;
             }
-            case CLOUD -> {
+            case CLOUD_SELENOID -> {
                 firefoxOptions.setCapability("browserName", Browsers.FIREFOX.getStringValue());
                 firefoxOptions.setCapability("browserVersion", version);
                 firefoxOptions.setCapability("selenoid:options", selenoidOptions);
