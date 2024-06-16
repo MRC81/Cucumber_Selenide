@@ -32,7 +32,7 @@ jobs:
 
       - name: Get Chrome Version
         id: chrome_version
-        run: echo "::set-output name=version::$(chrome --version | cut -d ' ' -f 2 | cut -d '.' -f 1)"
+        run: echo "name=version::$(chrome --version | cut -d ' ' -f 2 | cut -d '.' -f 1)" >> $GITHUB_OUTPUT
 
       - name: Build and Test with Gradle 
         if: always() # need to specify the browser version otherwise ChromeDriver fails for the 'latest' version value 
