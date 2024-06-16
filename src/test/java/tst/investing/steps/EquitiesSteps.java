@@ -4,7 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import tst.investing.PageObjects.EquityPage;
-import tst.investing.hooks.Infrastructure.TestContext;
+import tst.investing.Infrastructure.TestContext;
 
 import java.util.Map;
 
@@ -17,13 +17,7 @@ public class EquitiesSteps {
     public EquitiesSteps(TestContext testContext) {
         this.testContext = testContext;
     }
-
     EquityPage equityPage = new EquityPage();
-
-//    @Given("{string} equity page")
-//    public void openPage(String page) {
-//        equityPage.navigateTo(page);
-//    }
 
     @When("^get the current Stock value from the page$")
     public void getCurrentStockValue() {

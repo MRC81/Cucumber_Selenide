@@ -11,7 +11,7 @@ import static com.codeborne.selenide.CollectionCondition.textsInAnyOrder;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static tst.investing.Infrastructure.Utilities.logAndGetString;
-import static tst.investing.hooks.Infrastructure.LogLevel.ERROR;
+import static tst.investing.Infrastructure.LogLevel.ERROR;
 
 public class NavBarPage {
     private final By editionButton = By.cssSelector("[class*='EditionSelector_button']");

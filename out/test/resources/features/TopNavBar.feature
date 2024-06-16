@@ -21,13 +21,13 @@ Feature: Verify Top Navigation bar
       | English (Nigeria)      |
       | עברית                  |
       | Deutsch                |
-      | 日本語                  |
+      | 日本語                    |
       | Español (España)       |
-      | 한국어                   |
+      | 한국어                    |
       | Español (México)       |
-      | 简体中文                |
+      | 简体中文                   |
       | Français               |
-      | 繁體中文                |
+      | 繁體中文                   |
       | Italiano               |
       | Bahasa Indonesia       |
       | Nederlands             |
@@ -37,4 +37,4 @@ Feature: Verify Top Navigation bar
       | Polski                 |
       | Tiếng Việt             |
       | Português (Brasil)     |
-      | हिंदी                    |
+      | हिंदी                  |

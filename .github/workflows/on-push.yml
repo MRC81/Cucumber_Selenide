@@ -27,8 +27,8 @@ jobs:
 
       - uses: browser-actions/setup-chrome@v1
         with:
-          chrome-version: 120
           install-chromedriver: true
+      - run: chrome --version
 
       - name: Build and Test with Gradle
         if: always()

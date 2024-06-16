@@ -15,11 +15,11 @@ import java.util.Properties;
 import java.util.Arrays;
 
 import static java.lang.Boolean.parseBoolean;
-import static tst.investing.hooks.Infrastructure.Log.*;
+import static tst.investing.Infrastructure.Log.*;
 
 public class Utilities {
 
-    public static String logAndGetString(tst.investing.hooks.Infrastructure.LogLevel logLevel, String logMessage) {
+    public static String logAndGetString(tst.investing.Infrastructure.LogLevel logLevel, String logMessage) {
         switch (logLevel) {
             case ERROR -> error(logMessage);
             case WARN -> warn(logMessage);

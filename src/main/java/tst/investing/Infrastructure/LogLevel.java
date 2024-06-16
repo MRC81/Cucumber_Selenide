@@ -1,4 +1,4 @@
-package tst.investing.hooks.Infrastructure;
+package tst.investing.Infrastructure;
 
 public enum LogLevel {
         INFO,

@@ -18,9 +18,7 @@ public class FireFoxOptionsProvider extends OptionsProvider {
     @Override
     public AbstractDriverOptions<?> getOptions() {
         FirefoxOptions firefoxOptions = new FirefoxOptions();
-        firefoxOptions.setCapability(CapabilityType.PLATFORM_NAME, Platform.MAC);
-        firefoxOptions.setCapability("browserName", Browsers.FIREFOX.getStringValue());
-        firefoxOptions.setCapability("browserVersion", version);
+        firefoxOptions.setCapability(CapabilityType.PLATFORM_NAME, Platform.ANY);
         firefoxOptions.setAcceptInsecureCerts(true);
 
         switch (mode) {
@@ -28,6 +26,8 @@ public class FireFoxOptionsProvider extends OptionsProvider {
                 return firefoxOptions;
             }
             case CLOUD -> {
+                firefoxOptions.setCapability("browserName", Browsers.FIREFOX.getStringValue());
+                firefoxOptions.setCapability("browserVersion", version);
                 firefoxOptions.setCapability("selenoid:options", selenoidOptions);
                 return firefoxOptions;
             }

@@ -2,7 +2,7 @@ package tst.investing.PageObjects;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import tst.investing.hooks.Infrastructure.LogLevel;
+import tst.investing.Infrastructure.LogLevel;
 
 import java.util.Map;
 

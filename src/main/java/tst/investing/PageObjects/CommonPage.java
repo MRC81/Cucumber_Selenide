@@ -2,7 +2,7 @@ package tst.investing.PageObjects;
 
 import static com.codeborne.selenide.Selenide.open;
 import static tst.investing.Infrastructure.Utilities.logAndGetString;
-import static tst.investing.hooks.Infrastructure.LogLevel.ERROR;
+import static tst.investing.Infrastructure.LogLevel.ERROR;
 
 public class CommonPage {
 

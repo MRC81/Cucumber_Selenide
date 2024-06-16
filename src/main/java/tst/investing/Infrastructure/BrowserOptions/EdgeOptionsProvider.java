@@ -19,8 +19,6 @@ public class EdgeOptionsProvider extends OptionsProvider {
     public AbstractDriverOptions<?> getOptions() {
         EdgeOptions edgeOptions = new EdgeOptions();
         edgeOptions.setCapability(CapabilityType.PLATFORM_NAME, Platform.ANY);
-        edgeOptions.setCapability("browserName", Browsers.EDGE.getStringValue());
-        edgeOptions.setCapability("browserVersion", version);
         edgeOptions.setAcceptInsecureCerts(true);
 
         switch (mode) {
@@ -28,6 +26,8 @@ public class EdgeOptionsProvider extends OptionsProvider {
                 return edgeOptions;
             }
             case CLOUD -> {
+                edgeOptions.setCapability("browserName", Browsers.EDGE.getStringValue());
+                edgeOptions.setCapability("browserVersion", version);
                 edgeOptions.setCapability("selenoid:options", selenoidOptions);
                 return edgeOptions;
             }

@@ -1,4 +1,4 @@
-package tst.investing.hooks.Infrastructure;
+package tst.investing.Infrastructure;
 
 import java.util.HashMap;
 
