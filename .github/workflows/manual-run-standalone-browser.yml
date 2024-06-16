@@ -64,7 +64,7 @@ jobs:
       - name: Install Chrome
         id: setup_chrome
         if: ${{ inputs.BROWSER == 'chrome' }}
-        uses: browser-actions/setup-chrome@latest
+        uses: browser-actions/setup-chrome@v1
       - name: Print Chrome version
         if: ${{ inputs.BROWSER == 'chrome' }}
         run: chrome --version
@@ -72,7 +72,7 @@ jobs:
       - name: Install Firefox
         id: setup_firefox
         if: ${{ inputs.BROWSER == 'firefox' }}
-        uses: browser-actions/setup-firefox@latest
+        uses: browser-actions/setup-firefox@v1
       - name: Print Firefox version
         if: ${{ inputs.BROWSER == 'firefox' }}
         run: firefox --version
@@ -80,7 +80,7 @@ jobs:
       - name: Install Edge
         id: setup_edge
         if: ${{ inputs.BROWSER == 'edge' }}
-        uses: browser-actions/setup-edge@latest
+        uses: browser-actions/setup-edge@v1
       - name: Print Edge version
         if: ${{ inputs.BROWSER == 'edge' }}
         run: (Get-Item (Get-Command msedge).Source).VersionInfo.ProductVersion
