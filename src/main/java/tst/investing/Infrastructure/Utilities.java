@@ -86,5 +86,20 @@ public class Utilities {
         return System.getProperty("version", "latest");
     }
 
+    public static String getBrowserStackUsername() {
+        try {
+            return System.getenv("BROWSERSTACK_USERNAME");
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("The 'BROWSERSTACK_USERNAME' environment variable is not set, execution is impossible");
+        }
+    }
+
+    public static String getBrowserStackKey() {
+        try {
+            return System.getenv("BROWSERSTACK_ACCESS_KEY");
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("The 'BROWSERSTACK_ACCESS_KEY' environment variable is not set, execution is impossible");
+        }
+    }
 
 }

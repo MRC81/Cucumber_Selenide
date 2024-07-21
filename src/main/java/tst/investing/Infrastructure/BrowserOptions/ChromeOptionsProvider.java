@@ -4,12 +4,14 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.AbstractDriverOptions;
 import org.openqa.selenium.remote.CapabilityType;
+import tst.investing.Infrastructure.CloudOptionsProvider;
 import tst.investing.Infrastructure.enums.Mode;
 
-public class ChromeCloudOptionsProvider extends CloudOptionsProvider {
+public class ChromeOptionsProvider extends CloudOptionsProvider {
     private final String version;
     private final Mode mode;
-    public ChromeCloudOptionsProvider(String version, Mode mode) {
+
+    public ChromeOptionsProvider(String version, Mode mode) {
        this.version = version;
        this.mode = mode;
     }
@@ -35,6 +37,10 @@ public class ChromeCloudOptionsProvider extends CloudOptionsProvider {
             }
             case CLOUD_SELENOID -> {
                 chromeOptions.setCapability("selenoid:options", selenoidOptions);
+                return chromeOptions;
+            }
+            case CLOUD_BROWSERSTACK -> {
+                chromeOptions.setCapability("bstack:options", browserStackOptions);
                 return chromeOptions;
             }
             default -> throw new IllegalArgumentException("[ERROR] Invalid mode: " + mode);

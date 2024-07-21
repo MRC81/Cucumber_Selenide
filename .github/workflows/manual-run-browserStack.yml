@@ -1,4 +1,4 @@
-name: Cucumber Selenide tests CI - manual (Selenoid)
+name: Cucumber Selenide tests CI - manual (BrowserStack)
 
 on:
   workflow_call:
@@ -16,18 +16,7 @@ on:
           - chrome
           - firefox
           - edge
-          - safari
         default: chrome
-      VERSION:
-        type: choice
-        required: true
-        description: Select the browser version
-        options:
-          - latest
-          - "122.0"
-          - "121.0"
-          - "120.0"
-        default: latest
 
 permissions:
   contents: write
@@ -53,6 +42,17 @@ jobs:
         run: |
           echo "- BROWSER: ${{ steps.prepare.outputs.BROWSER }}" >> $GITHUB_STEP_SUMMARY
 
+      - name: 'BrowserStack Env Setup'  # Invokes the setup-env action
+        uses: browserstack/github-actions/setup-env@master
+        with:
+          username:  ${{ secrets.BROWSERSTACK_USERNAME }}
+          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+      - name: 'BrowserStack Local Tunnel Setup'  # Invokes the setup-local action
+        uses: browserstack/github-actions/setup-local@master
+        with:
+          local-testing: start
+          local-identifier: random
+
   run_tests:
     runs-on: ubuntu-latest
     needs: [ prepare ]
@@ -66,29 +66,10 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Start Selenoid Server
-        uses: Xotabu4/selenoid-github-action@v2
-        with:
-          selenoid-start-arguments: |
-            --browsers-json "./browsers.json"
-            --version "${{ inputs.VERSION }}"
-        id: start-selenoid
-        continue-on-error: false
-
-      - name: Check Selenoid has been started
-        run: |
-          response=$(curl --head --fail http://localhost:4444/status 2>&1)
-          if [ $? -eq 0 ]; then
-            echo "Selenoid is available on localhost:4444"
-            echo "Response: $response"
-          else
-            echo "Selenoid is not available on localhost:4444"
-          fi
-
       - name: Build and Test with Gradle
         if: always()
         run: |
-          ./gradlew clean test -Dmode=CLOUD_SELENOID -Dselenide.headless=false -Dselenide.browser="${{ inputs.BROWSER }}"
+          ./gradlew clean test -Dmode=CLOUD_BROWSERSTACK -Dselenide.browser="${{ inputs.BROWSER }}"
         continue-on-error: true
 
       - name: add Env params to Allure report

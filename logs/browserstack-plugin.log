@@ -1,0 +1,13 @@
+17:20:46.063 [AWT-EventQueue-0] INFO  c.b.actions.EnableBrowserStack - Setting enable browserstack run update
+17:20:46.072 [AWT-EventQueue-0] INFO  c.b.actions.DisableBrowserStack - Setting disable browserstack run update
+17:22:23.055 [AWT-EventQueue-0] INFO  c.b.launchers.LaunchMavenCommand - Integrate source: cucumber-junit:intellij:v1.1.4
+17:22:23.055 [AWT-EventQueue-0] INFO  c.b.launchers.LaunchMavenCommand - Executing maven archetype command - browserstack-sdk-archetype-integrate
+17:22:23.129 [ApplicationImpl pooled thread 4639] INFO  c.b.l.BrowserStackRunExtension - maven
+17:22:23.129 [ApplicationImpl pooled thread 4639] INFO  com.browserstack.utils.Helpers - null
+17:22:38.128 [java] INFO  c.b.launchers.LaunchMavenCommand - Completed maven archetype command
+17:24:15.204 [AWT-EventQueue-0] INFO  c.b.actions.DisableBrowserStack - Setting disable browserstack run update
+17:24:15.213 [AWT-EventQueue-0] INFO  c.b.actions.EnableBrowserStack - Setting enable browserstack run update
+17:25:30.193 [AWT-EventQueue-0] INFO  c.b.launchers.LaunchMavenCommand - Integrate source: cucumber-junit5:intellij:v1.1.4
+17:25:30.193 [AWT-EventQueue-0] INFO  c.b.launchers.LaunchMavenCommand - Executing maven archetype command - browserstack-sdk-archetype-integrate
+17:25:30.218 [ApplicationImpl pooled thread 4639] INFO  c.b.l.BrowserStackRunExtension - maven
+17:25:30.218 [ApplicationImpl pooled thread 4639] INFO  com.browserstack.utils.Helpers - true

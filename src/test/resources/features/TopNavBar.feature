@@ -1,6 +1,7 @@
 @TopNavBar
 Feature: Verify Top Navigation bar
 
+  @TestEditions
   Scenario: Top Navigation bar Editions button is functional
     Given "/" page
     When user hovers over Edition button on the Top Navigation bar

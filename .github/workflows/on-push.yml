@@ -1,4 +1,4 @@
-name: Cucumber Allure tests CI (On push run with Chrome)
+name: Cucumber Selenide tests CI (On push run with installed Chrome)
 
 on:
   push:

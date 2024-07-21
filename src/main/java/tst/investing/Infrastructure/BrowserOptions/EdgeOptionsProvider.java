@@ -4,12 +4,13 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.remote.AbstractDriverOptions;
 import org.openqa.selenium.remote.CapabilityType;
+import tst.investing.Infrastructure.CloudOptionsProvider;
 import tst.investing.Infrastructure.enums.Mode;
 
-public class EdgeCloudOptionsProvider extends CloudOptionsProvider {
+public class EdgeOptionsProvider extends CloudOptionsProvider {
     private final String version;
     private final Mode mode;
-    public EdgeCloudOptionsProvider(String version, Mode mode) {
+    public EdgeOptionsProvider(String version, Mode mode) {
        this.version = version;
        this.mode = mode;
     }
@@ -29,6 +30,11 @@ public class EdgeCloudOptionsProvider extends CloudOptionsProvider {
                 edgeOptions.setCapability("selenoid:options", selenoidOptions);
                 return edgeOptions;
             }
+            case CLOUD_BROWSERSTACK -> {
+                edgeOptions.setCapability("bstack:options", browserStackOptions);
+                return edgeOptions;
+            }
+
             default -> throw new IllegalArgumentException("[ERROR] Invalid mode: " + mode);
         }
     }

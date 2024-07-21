@@ -1,4 +1,4 @@
-name: Cucumber Allure tests CI - manual (Standalone browser)
+name: Cucumber Selenide tests CI - manual (installed browser)
 
 on:
   workflow_call:
